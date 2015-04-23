@@ -85,9 +85,7 @@ public class Fraction {
         System.out.println("Input Error: Denominator Cannot be zero");
         newLine();
     }
-    public static void goodbye(){
-        System.out.println("thanks for using my Calculator");
-    }
+
 
 
 
