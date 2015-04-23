@@ -1,3 +1,6 @@
+/**
+ * Created by ricardo on 4/23/2015.
+ */
 public class Fraction {
 
     private int Numerator; // x
@@ -81,6 +84,9 @@ public class Fraction {
     public static void DenominatorCannotBeZero() {
         System.out.println("Input Error: Denominator Cannot be zero");
         newLine();
+    }
+    public static void goodbye(){
+        System.out.println("thanks for using my Calculator");
     }
 
 
