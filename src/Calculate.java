@@ -2,13 +2,13 @@
  * Created by ricardo van der spek on 4/23/2015.
  */
 public class Calculate {
-    private Fraction answer;
+    public Fraction answer;
 
-    public void multiplicate(Fraction fraction1, Fraction fraction2){
+    public Fraction multiplicate(Fraction fraction1, Fraction fraction2){
         this.answer = new Fraction();
         answer.setNumerator(fraction1.getNumerator() * fraction2.getNumerator());
         answer.setDenominator(fraction1.getDenominator() * fraction2.getDenominator());
-        Fraction.displayAnswer("Multiplication", "*", fraction1, fraction2, answer);
+        return answer;
     }
     public void divide(Fraction fraction1, Fraction fraction2){
         this.answer = new Fraction();

@@ -1,3 +1,5 @@
+import java.io.*;
+
 /**
  * Created by ricardo on 4/23/2015.
  */
@@ -5,6 +7,8 @@ public class Fraction {
 
     private int Numerator; // x
     private int Denominator; // y
+
+
 
     public int getNumerator() {
         return Numerator;
@@ -24,6 +28,16 @@ public class Fraction {
 
     // This method is used to display fractions
 // Some kind of processing also
+
+
+    @Override
+    public String toString() {
+        return "Fraction{" +
+                "Numerator=" + Numerator +
+                ", Denominator=" + Denominator +
+                '}';
+    }
+
     public void display() {
 
         // 0/y and x/1 types

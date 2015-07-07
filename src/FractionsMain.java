@@ -2,24 +2,35 @@
  * Created by ricardo on 4/7/2015.
  */
 
+import java.io.*;
 import java.util.Scanner;
 
 public class FractionsMain {
+    Fraction fraction1 = new Fraction(); // first fraction
+    Fraction fraction2 = new Fraction(); // second fraction
     private Scanner keyboard = new Scanner(System.in);
     private int choice;
+    public Calculate c = new Calculate();
+    BufferedReader br = null;
+    BufferedWriter bw = null;
+    PrintWriter out;
+    String input = "C:\\Users\\ricardo van der spek\\Downloads\\opdracht4\\invoer.txt";
+    String output = "C:\\Users\\ricardo van der spek\\Downloads\\opdracht4\\output.txt";
+    private String line = " ";
+    private String splitValue = "\\s | / |\\s*[a-z]+\\s*";
 
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException {
         FractionsMain f = new FractionsMain();
-        f.Run();
-
+        f.Run();;
     }
 
-    public void Run() {
+    public void Run() throws IOException {
         System.out.println("Would you like to use user input(1) or file input(2)? press 1 or 2");
         int inputchoice = keyboard.nextInt();
         switch(inputchoice){
             case 1: userinput();
                     break;
+            case 2: fileinput();
         }
 
     }
@@ -39,23 +50,21 @@ public class FractionsMain {
         switch (choice) {
             // Addition
             case 1:
-                addit(fraction1, fraction2);
+                c.addit(fraction1, fraction2);
                 break;
             case 2:
-                subtract(fraction1, fraction2);
+                c.subtract(fraction1, fraction2);
                 break;
-            case 3:multiplicate(fraction1, fraction2);
+            case 3:
+                c.multiplicate(fraction1, fraction2);
                 break;
             case 4:
-                divide(fraction1, fraction2);
+                c.divide(fraction1, fraction2);
                 break;
         }
     }
 
     public void userinput() {
-        Fraction fraction1 = new Fraction(); // first fraction
-        Fraction fraction2 = new Fraction(); // second fraction
-
 
         // get user inputs for fraction one and validate them
         do {
@@ -111,6 +120,28 @@ public class FractionsMain {
         fraction2.display();
         Fraction.newLine();
         usage(fraction1, fraction2);
+    }
+    public void fileinput() throws IOException {
+        readfile();
+    }
+    public void readfile() throws IOException {
+        out = new PrintWriter(output);
+        bw = new BufferedWriter(out);
+        br = new BufferedReader(new FileReader(input));
+
+        while((line = br.readLine()) != null){
+            String[] Input = line.split(splitValue);
+
+            if (Input.length == 4){
+                fraction1.setNumerator(Integer.parseInt(Input[0]));
+                fraction1.setDenominator(Integer.parseInt(Input[1]));
+                fraction2.setNumerator(Integer.parseInt(Input[2]));
+                fraction2.setDenominator(Integer.parseInt(Input[3]));
+                usage(fraction1, fraction2);
+
+
+            }
+        }
     }
 
 }
